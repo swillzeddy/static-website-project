@@ -25,4 +25,8 @@ jobs:
 
     - name: Deploy files to Azure VM
       run: |
-        rsync -avz --delete ./ azureuser@172.167.215.69:/var/www/html/
+       rsync -avz --delete \
+          --exclude '.git/' \
+          --exclude 'deploy-to-azure.sh' \
+          --exclude '.github/' \
+          ./ azureuser@172.167.215.69:/var/www/html/
